@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.Map;
 /**
  * Created by THINH TRAN on 14-Mar-17.
  */
-@WebFilter(filterName = "DBFilter", urlPatterns = "/*")
+@WebFilter(filterName = "DBFilter")
 public class DBFilter implements Filter {
     public void destroy() {
     }
@@ -41,7 +42,8 @@ public class DBFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         if (checkNeedDatabase((HttpServletRequest) req)){
             try {
-                MyUtils.storeConnection(req, ConnectionUltis.getConnection());
+                Connection connection = ConnectionUltis.getConnection();
+                MyUtils.storeConnection(req, connection);
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
