@@ -15,9 +15,8 @@ import java.sql.Connection;
 public class MyUtils {
     public static final String ATT_NAME_CONNECTION = "ATTRIBUTE_FOR_CONNECTION";
     private static final String ATT_NAME_USER_NAME = "ATTRIBUTE_FOR_STORE_USER_NAME_IN_COOKIE";
-    private static final String LOGINED_USER = "USER_ACCOUNT_WHO_HAVE_LOG_IN_WAS_STORE_IN_SESSION";
 
-
+``
     public static void storeConnection(ServletRequest request, Connection conn) {
         request.setAttribute(ATT_NAME_CONNECTION, conn);
     }
@@ -28,11 +27,11 @@ public class MyUtils {
     }
 
     public static void storeLoginedUser(HttpSession session, UserAccount user){
-        session.setAttribute(LOGINED_USER, user);
+        session.setAttribute("loginedUser", user);
     }
 
     public static UserAccount getLoginedUser(HttpSession session){
-        return (UserAccount) session.getAttribute(LOGINED_USER);
+        return (UserAccount) session.getAttribute("loginedUser");
     }
 
     public static void storeUserInCookie(HttpServletResponse response, UserAccount account){
