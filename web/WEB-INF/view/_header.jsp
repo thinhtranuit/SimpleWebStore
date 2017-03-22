@@ -1,4 +1,4 @@
-<%--
+<%@ page import="ultis.MyUtils" %><%--
   Created by IntelliJ IDEA.
   User: THINH TRAN
   Date: 16-Mar-17
@@ -12,7 +12,11 @@
         <h1>My Site</h1>
     </div>
     <div class="col-md-8">
-        Hello <b>${sessionScope.loginedUser.userName}</b>
+        Hello <b>${sessionScope.loginedUser.userName}</b><a href="${pageContext.request.contextPath}/logout"><%
+        if (MyUtils.getLoginedUser(request.getSession()) != null){
+            %>Đăng xuất<%
+        }
+        %></a>
         <br/>
         Search <input name="search">
     </div>
