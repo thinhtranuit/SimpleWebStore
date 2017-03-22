@@ -80,6 +80,21 @@ public class DBUltis {
         ps.executeUpdate();
     }
 
+    public static void updateProduct(Connection connection,Product newProduct) throws SQLException {
+        Product product = DBUltis.findProduct(connection, newProduct.getCode());
+        if (product == null){
+            DBUltis.insertProduct(connection, newProduct);
+        } else {
+            String query = "Update Product set name = ?, price = ? where code =?";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, newProduct.getName());
+            ps.setFloat(2, newProduct.getPrice());
+            ps.setString(3, newProduct.getCode());
+            ps.executeUpdate();
+            System.out.println(ps);
+        }
+    }
+
     public static void insertProduct(Connection connection, Product product) throws SQLException {
         String query = "Insert into Product(Code, Name, Price) values (?,?,?)";
         PreparedStatement ps = connection.prepareStatement(query);
