@@ -43,6 +43,7 @@
             </tr>
         </c:forEach>
     </table>
+    <a class="btn" href="${pageContext.request.contextPath}/addProduct">Add New Product</a>
     <jsp:include page="_footer.jsp"/>
 </body>
 </html>
