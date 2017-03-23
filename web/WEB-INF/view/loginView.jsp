@@ -14,7 +14,7 @@
     <jsp:include page="_header.jsp"/>
     <jsp:include page="_menu.jsp"/>
     <h1>Login Page</h1>
-    <p style="text-decoration-color: red">${requestScope.error}</p>
+    <p style="color: red">${requestScope.error}</p>
     <form method="post" action="doLogin">
         <table>
             <tr>
