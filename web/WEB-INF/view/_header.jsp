@@ -9,7 +9,7 @@
          pageEncoding="UTF-8"%>
 <div class="row" style="background: #E0E0E0;">
     <div class="col-md-4">
-        <h1>My Site</h1>
+        <a style="text-decoration: none;" href="${pageContext.request.contextPath}/home" ><h1>My Site</h1></a>
     </div>
     <div class="col-md-8">
         Hello <b>${sessionScope.loginedUser.userName}</b><a href="${pageContext.request.contextPath}/logout"><%
